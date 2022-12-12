@@ -23,10 +23,11 @@ export const Card = ({ organization }: Props) => {
   return (
     <div
       className={cx({
-        'relative bg-gray-100 transition-[colors, shadow] ease-out duration-200 border-solid border-2 border-gray-200 rounded-2xl p-6 flex flex-col gap-2 min-w-[400px] items-start hover:shadow-md':
+        'relative bg-gray-100 transition-[colors, shadow] ease-out duration-200 border-solid border-2 border-gray-200 rounded-2xl p-6 flex flex-col gap-2 min-w-[400px] items-start hover:shadow-md cursor-pointer':
           true,
         'border-2 border-blue-500 bg-[rgba(47,128,237,0.02)] shadow-md': isOpen,
       })}
+      onClick={() => setIsOpen(!isOpen)}
     >
       <Organization organization={organization} />
 
@@ -52,11 +53,10 @@ export const Card = ({ organization }: Props) => {
 
       <span
         className={cx({
-          'absolute bottom-3 left-[calc(50%-10px)] cursor-pointer transition-all ease-out duration-200':
+          'absolute bottom-3 left-[calc(50%-10px)] transition-all ease-out duration-200':
             true,
           'rotate-180': isOpen,
         })}
-        onClick={() => setIsOpen(!isOpen)}
       >
         <ArrowDown />
       </span>

@@ -7,7 +7,5 @@ export const getMembers = async (organization: string) => {
   )
   const data = await response.json()
 
-  console.log({ data })
-
   return data as IMember[] | []
 }

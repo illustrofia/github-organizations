@@ -7,7 +7,5 @@ export const getOrganizations = async () => {
   )
   const data = await response.json()
 
-  console.log({ data })
-
   return data as IOrganization[]
 }
