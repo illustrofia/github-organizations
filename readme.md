@@ -1,34 +1,42 @@
 # Github Organizations
 
-### Decisions
+## Strategy
 
-- Yarn
+### I. Project Setup
 
-  Faster than npm and I haven't worked with pnpm yet. Of other options I am not aware.
+I chose to focus on setting the project right at first, so I spent some time configuring the project and choosing my technologies.
 
-- Vite
+### II. Making it work
 
-  Faster, cleaner and easier to use than other options.
+The next step was getting the correct data from the GitHub API.
 
-- TailwindCSS
+### III. Making it pretty
 
-  It's simple to use, you can write a lot of style with little code.
+Here I focused mainly on creating the components based on the Figma file.
 
-- ReactQuery
 
-  Easy to work with and it has a ton of useful features.
+### IV. Final touches
 
-####
+I decided not to focus on some of the small UI features such as the Member counter, because I had some limit from the Github API which I didn't solve from the beginning, which end up bitting me in the neck later on 🎉. However, I focused on making the code easy to improve.
 
-### General Structure
+## Scalability
 
-In order to maintain code quality I used:
+If we want to scale the project and create a component with pagination, or infinite scroll, we can easily do that by adapting the request for fetching organizations - instead of having hard coded values, it could receive props for `per_page` and `since`. This can be easily done with React Query.
 
-- `.husky/*`: git hooks to maintain code quality
-- `.eslintrc.cjs`: eslint config
-- `.prettierrc.json`: prettier config
+Also, I would definitely connect to the Github API using some sort of key which allows us to make more request.
 
-### Running the project
+## Technologies
+
+- Husky - helps to keep a clean codebase and prevents errors from getting through the commit phase
+- Yarn - faster than npm and I haven't worked with pnpm yet. Of other options I am not aware.
+- Vite - faster, cleaner and easier to use than other options.
+- TailwindCSS - simple to use, you can write a lot of style with little code.
+- ReactQuery - Easy to work with and it has a ton of useful features.
+- eslint - self explanatory
+- prettier - self explanatory
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## Running the project
 1. Install Yarn
 2. Install dependencies with `yarn`
-3. Run `yarn dev` to start development.
+3. Run `yarn dev --host` to start development.
