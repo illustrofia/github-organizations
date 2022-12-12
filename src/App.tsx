@@ -1,10 +1,8 @@
 import './App.css'
-import { Menu, Providers } from './components'
+import { Home, Providers } from './components'
 
-export const App = () => {
-  return (
-    <Providers>
-      <Menu />
-    </Providers>
-  )
-}
+export const App = () => (
+  <Providers>
+    <Home />
+  </Providers>
+)

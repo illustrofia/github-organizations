@@ -1,6 +1,4 @@
-export const BASE_URL = 'https://api.github.com/organizations'
-
-export interface Organization {
+export interface IOrganization {
   login: string
   id: 4497
   node_id: string
@@ -14,6 +12,3 @@ export interface Organization {
   avatar_url: string
   description: string
 }
-
-export const getOrganizations = async (): Promise<Organization[]> =>
-  fetch(BASE_URL).then(res => res.json())
