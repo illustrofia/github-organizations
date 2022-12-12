@@ -1,22 +1,22 @@
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import './App.css'
-
-const queryClient = new QueryClient()
+import { Providers } from './components'
+import { getOrganizations } from './lib'
 
 export const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Providers>
       <Example />
-    </QueryClientProvider>
+    </Providers>
   )
 }
 
 const Example = () => {
-  const { isLoading, error, data } = useQuery('repoData', () =>
-    fetch('https://api.github.com/repos/tannerlinsley/react-query').then(res =>
-      res.json()
-    )
-  )
+  const {
+    isLoading,
+    error,
+    data: organizations,
+  } = useQuery('organizations', getOrganizations, { initialData: [] })
 
   if (isLoading) {
     return <>{'Loading...'}</>
@@ -27,13 +27,5 @@ const Example = () => {
     return <>{'An error has occurred: ' + (error as any).message}</>
   }
 
-  return (
-    <div>
-      <h1>{data.name}</h1>
-      <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong>{' '}
-      <strong>✨ {data.stargazers_count}</strong>{' '}
-      <strong>🍴 {data.forks_count}</strong>
-    </div>
-  )
+  return <div>{organizations && JSON.stringify(organizations)}</div>
 }
