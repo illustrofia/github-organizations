@@ -25,6 +25,13 @@ If we want to scale the project and create a component with pagination, or infin
 
 Also, I would definitely connect to the Github API using some sort of key which allows us to make more request.
 
+
+## Known Issues
+
+1. The card transitions (I would search for different approaches that would achieve the animation from Figma; perhaps also using react-spring)
+2. The member counters (I would create a separate component for this one which depends on the number of members)
+3. The case where the request failed is not treated correctly, therefore the user gets a blank screen when we hit the api request limit. I would use React Query's features to display some kind of message when the request failes.
+
 ## Technologies
 
 - Husky - helps to keep a clean codebase and prevents errors from getting through the commit phase

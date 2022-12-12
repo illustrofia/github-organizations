@@ -23,7 +23,7 @@ export const Card = ({ organization }: Props) => {
   return (
     <div
       className={cx({
-        'relative bg-gray-100 transition-[colors, shadow] ease-out duration-200 border-solid border-2 border-gray-200 rounded-2xl p-6 flex flex-col gap-2 min-w-[400px] items-start hover:shadow-md cursor-pointer':
+        'relative bg-gray-100 transition-all ease-out duration-200 border-solid border-2 border-gray-200 rounded-2xl p-6 flex flex-col gap-2 min-w-[400px] items-start hover:shadow-md cursor-pointer':
           true,
         'border-2 border-blue-500 bg-[rgba(47,128,237,0.02)] shadow-md': isOpen,
       })}
