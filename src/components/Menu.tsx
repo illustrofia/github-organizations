@@ -3,15 +3,26 @@ import { Card } from '.'
 import { getOrganizations } from '../api'
 
 export const Menu = () => {
-  const { data: organizations } = useQuery(
-    'organizations',
-    async () => getOrganizations(),
-    {
-      initialData: [],
-    }
-  )
+  const {
+    data: organizations,
+    isLoading,
+    error,
+  } = useQuery('organizations', async () => getOrganizations(), {
+    initialData: [],
+  })
 
-  const cards = organizations?.map(org => <Card organization={org} />)
+  if (isLoading) {
+    return <>Loading organizations...</>
+  }
+
+  if (error) {
+    const errorMessage = error instanceof Error ? ': ' + error.message : ''
+    return <>Oops, something went wrong {errorMessage}</>
+  }
+
+  const cards = organizations?.map(org => (
+    <Card organization={org} key={org.id} />
+  ))
 
   const leftColCards = cards?.filter((_, index) => index % 2 == 0)
   const rightColCards = cards?.filter((_, index) => index % 2 != 0)
